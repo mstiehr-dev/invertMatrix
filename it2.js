@@ -14,12 +14,17 @@ function genMatrix(dim) { // Rückgabewert ist die generierte HTML-Tabelle
 	var form = document.createElement("form"); 
 	form.setAttribute("id", "inputmatrix");
 	form.setAttribute("action", "http://maltin.pisces.uberspace.de/cgi-bin/matrix.cgi");
-	form.setAttribute("method", "GET");
+	form.setAttribute("method", "post");
+	var hiddenInfo = document.createElement("input");
+	hiddenInfo.setAttribute("type","hidden");
+	hiddenInfo.setAttribute("name", "dimension");
+	hiddenInfo.setAttribute("value", dim);
+	form.appendChild(hiddenInfo);
 	// Eingaben verifizieren:
 	form.onsubmit = function() {
 		// hier testen, ob alle felder ausgefüllt sind
 		for(var i=0; i<(dim*dim); i++) {
-			var id = "x" + i;
+			var id = "x" + (i+1);
 			if(document.getElementById(id).value == "") {
 				alert("bitte das Feld " + (i+1) + " ausfüllen!");
 				return false;
@@ -36,7 +41,7 @@ function genMatrix(dim) { // Rückgabewert ist die generierte HTML-Tabelle
 			var cell = document.createElement("td");
 
 			var cell_input = document.createElement("input");
-			cell_input.setAttribute("id", "x"+(row*dim+col));
+			cell_input.setAttribute("id", "x"+(row*dim+col+1));
 			cell_input.setAttribute("name", cell_input.getAttribute("id"));
 			//cell_input.setAttribute("value",cell_input.getAttribute("id"));
 			cell_input.setAttribute("style", "height: 20px; width: 35px");
