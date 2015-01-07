@@ -41,14 +41,8 @@ int main(void) {
    print_header();
    print_html_header("Hallo Welt in CGI mit Zeit\n");
    char *name, *query;
-/* method GET: 
-   query = getenv("QUERY_STRING");
-   printf("query: %s<br/>",query);
    printf("<br/><br/>der alte gibt den code nicht raus<br/><br/>");
    printf("<p><a href=\"http://maltin.pisces.uberspace.de/it2/\">reload</a></p>");
-   //name = strstr(query,"textfeld");
-   //name += strlen("textfeld=");
-*/
 /* method POST */
    char *lenStr = getenv("CONTENT_LENGTH");
    int len = atoi(lenStr);
@@ -71,7 +65,6 @@ int main(void) {
    //char anrede[ilen+1];
    //sscanf(buf,"textfeld=%s",anrede);
    //greet(anrede);
-/* Ende POST */
    print_time();
    print_html_end();
    return EXIT_SUCCESS;
