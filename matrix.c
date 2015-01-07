@@ -4,13 +4,21 @@
 #include <time.h>
 #include <string.h>
 
+
+/* damit überhaupt ein HTML-Dokument ausgegeben wird */
+void print_header(void) {
+   printf("Content-Type: text/html\n\n");
+}
+
 /* die Kopfzeile eines Standard-HTML-Dokuments;
  * Titel: String, der als Titel erscheinen soll
  */
 void print_html_header(char *titel) {
-   printf("<html><head>\n");
+   print_header();
+   printf("<html>\n<head>\n");
    printf("<title>%s</title>\n",titel);
-   printf("<meta charset=\"utf-8\" />");
+   printf("<meta charset=\"utf-8\" />\n");
+   printf("<link rel=\"stylesheet\" type=\"text/css\" href=\"http://maltin.pisces.uberspace.de/it2/style.css\" />\n");
    printf("</head><body>\n");
 }
 
@@ -19,17 +27,16 @@ void print_html_end(void) {
    printf("</body></html>\n");
 }
 
-/* damit überhaupt ein HTML-Dokument ausgegeben wird */
-void print_header(void) {
-   printf("Content-Type: text/html\n\n");
-}
+
 
 void print_time(void) {
    time_t zeit;
 
    time(&zeit);
+   printf("<p id=\"time\">");
    printf("Aktuelle Systemzeit: ");
    printf("%s\n",ctime(&zeit));
+   printf("</p>\n");
 }
 
 void greet(char *s) {
@@ -38,7 +45,6 @@ void greet(char *s) {
 }
 
 int main(void) {
-   print_header();
    print_html_header("Hallo Welt in CGI mit Zeit\n");
    char *name, *query;
    printf("<br/><br/>der alte gibt den code nicht raus<br/><br/>");

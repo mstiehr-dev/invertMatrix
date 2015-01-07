@@ -1,11 +1,15 @@
-
-
-
-
 body {
 	background-color: #006666;
+	color: #24240C;
+}
+a:link {
+	color: #FF0000;
+}
+a:visited {
+	color: #00FF00;
 }
 
-h1 {
-	color: #009933;
+
+#time {
+	color: #4D00B2;
 }
