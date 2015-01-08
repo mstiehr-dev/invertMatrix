@@ -16,20 +16,21 @@
   <body>
     <h1>Inverse Matrix</h1>
     <h2>Bitte geben Sie die Dimension Ihrer Matrix ein: </h2>
-    <!-- <input id="dim" type="text" value="1" /> -->
-    <select id="dim" size="1">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5</option>
-      <option value="6">6</option>
-      <option value="7">7</option>
-      <option value="8">8</option>
-      <option value="9">9</option>
-      <option value="10">10</option>
+    <select id="dim">
+    <script>
+      //select = document.createElement("select");
+      var select = document.getElementById("dim");
+      select.id = "dim";
+      for(var i=1; i<7; i++) {
+        var op = document.createElement("option");
+        op.text = i;
+        op.value = i;
+        select.appendChild(op);
+      }
+    </script>
     </select>
     <button onclick="getDim()">enter</button>
+    <input type="checkbox" id="checkbox-gen" name="generic" value="true" />generische Matrix
     <p id="stub" />
   </body>
 </html>

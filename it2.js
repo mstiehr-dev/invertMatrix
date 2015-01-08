@@ -4,8 +4,80 @@
 function getDim() {
 	dim = document.getElementById("dim").value;
 	node = document.getElementById("stub");
-	node.innerHTML = ""; // alte Tabelle löschen 
-	node.appendChild(genMatrix(dim));
+	node.innerHTML = ""; // alte Tabelle löschen
+	node.appendChild(genMatrix(dim)); 
+	if(document.getElementById("checkbox-gen").checked==true) {
+		if(dim==1) {
+			document.getElementById("x1").value = 1;
+		} else 
+		if(dim==2) {
+			document.getElementById("x1").value = 2;
+			document.getElementById("x2").value = 5;
+			document.getElementById("x3").value = 1;
+			document.getElementById("x4").value = 3;
+		} else 
+		if(dim==3) {
+			document.getElementById("x1").value = 1;
+			document.getElementById("x2").value = 2;
+			document.getElementById("x3").value = 0;
+			document.getElementById("x4").value = 2;
+			document.getElementById("x5").value = 4;
+			document.getElementById("x6").value = 1;
+			document.getElementById("x7").value = 2;
+			document.getElementById("x8").value = 1;
+			document.getElementById("x9").value = 0;
+		} else 
+		if(dim==4) {
+			document.getElementById("x1").value = 4;
+			document.getElementById("x2").value = 0;
+			document.getElementById("x3").value = 0;
+			document.getElementById("x4").value = 0;
+			document.getElementById("x5").value = 0;
+			document.getElementById("x6").value = 0;
+			document.getElementById("x7").value = 2;
+			document.getElementById("x8").value = 0;
+			document.getElementById("x9").value = 0;
+			document.getElementById("x10").value = 1;
+			document.getElementById("x11").value = 2;
+			document.getElementById("x12").value = 0;
+			document.getElementById("x13").value = 1;
+			document.getElementById("x14").value = 0;
+			document.getElementById("x15").value = 0;
+			document.getElementById("x16").value = 1;
+		} else 
+		if(dim==5) {
+			document.getElementById("x1").value = 1;
+			document.getElementById("x2").value = 8;
+			document.getElementById("x3").value = -9;
+			document.getElementById("x4").value = 7;
+			document.getElementById("x5").value = 5;
+			document.getElementById("x6").value = 0;
+			document.getElementById("x7").value = 1;
+			document.getElementById("x8").value = 0;
+			document.getElementById("x9").value = 4;
+			document.getElementById("x10").value = 4;
+			document.getElementById("x11").value = 0;
+			document.getElementById("x12").value = 0;
+			document.getElementById("x13").value = 1;
+			document.getElementById("x14").value = 2;
+			document.getElementById("x15").value = 5;
+			document.getElementById("x16").value = 0;
+			document.getElementById("x17").value = 0;
+			document.getElementById("x18").value = 0;
+			document.getElementById("x19").value = 1;
+			document.getElementById("x20").value = -5;
+			document.getElementById("x21").value = 0;
+			document.getElementById("x22").value = 0;
+			document.getElementById("x23").value = 0;
+			document.getElementById("x24").value = 0;
+			document.getElementById("x25").value = 1;
+
+		}
+		else {
+			alert("Kann max. 5x5 Matrizen generieren!");
+		}
+		document.getElementById("checkbox-gen").checked = false; // zurücksetzen 
+	}
 }
 
 
@@ -34,7 +106,6 @@ function genMatrix(dim) { // Rückgabewert ist die generierte HTML-Tabelle
 
 	// Eingabemaske bauen: 
 	tab = document.createElement("table");
-	tab.setAttribute("style", "border-style: solid; border-width: 5px");
 	for(var row=0; row<dim; row++) {
 		var crow = document.createElement("tr");
 		for(var col=0; col<dim; col++) {
@@ -43,16 +114,8 @@ function genMatrix(dim) { // Rückgabewert ist die generierte HTML-Tabelle
 			var cell_input = document.createElement("input");
 			cell_input.setAttribute("id", "x"+(row*dim+col+1));
 			cell_input.setAttribute("name", cell_input.getAttribute("id"));
-			//cell_input.setAttribute("value",cell_input.getAttribute("id"));
-			cell_input.setAttribute("style", "height: 20px; width: 35px");
 			cell.appendChild(cell_input);
 			crow.appendChild(cell);
-			/* '+' anhängen: 
-			if(col<dim) {
-				var label = document.createElement("label");
-				label.innerHTML = "x<sub>" + (col+1) + "</sub>" + "+";
-				crow.appendChild(label);
-			} */
 		}
 		tab.appendChild(crow);
 	}
