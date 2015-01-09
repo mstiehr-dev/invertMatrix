@@ -14,14 +14,14 @@
     </style> -->
   </head>
   <body>
-    <h1>Inverse Matrix</h1>
+    <h1 id="headline">Inverse Matrix</h1>
     <h2>Bitte geben Sie die Dimension Ihrer Matrix ein: </h2>
     <select id="dim">
     <script>
       //select = document.createElement("select");
       var select = document.getElementById("dim");
       select.id = "dim";
-      for(var i=1; i<7; i++) {
+      for(var i=1; i<=5; i++) {
         var op = document.createElement("option");
         op.text = i;
         op.value = i;

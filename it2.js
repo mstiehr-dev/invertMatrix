@@ -73,9 +73,6 @@ function getDim() {
 			document.getElementById("x25").value = 1;
 
 		}
-		else {
-			alert("Kann max. 5x5 Matrizen generieren!");
-		}
 		document.getElementById("checkbox-gen").checked = false; // zurücksetzen 
 	}
 }
@@ -114,6 +111,7 @@ function genMatrix(dim) { // Rückgabewert ist die generierte HTML-Tabelle
 			var cell_input = document.createElement("input");
 			cell_input.setAttribute("id", "x"+(row*dim+col+1));
 			cell_input.setAttribute("name", cell_input.getAttribute("id"));
+			cell_input.setAttribute("placeholder",cell_input.getAttribute("id"));
 			cell.appendChild(cell_input);
 			crow.appendChild(cell);
 		}
