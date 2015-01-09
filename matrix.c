@@ -146,8 +146,8 @@ int Inverse (float a[][10], float ainv[][5], int n,int druck)
 
   if (fehler) 
   {
-    printf ("\n\nInverse: Matrix ist singulaer - es existiert keine inverse Matrix\n");
-    return 0; 
+    //printf ("\n\nInverse: Matrix ist singulaer - es existiert keine inverse Matrix\n");
+    return 1; 
   }
   // Die angehaengte Einheitsmatrix Matrix hat sich jetzt in 
   // die inverse Matrix umgewandelt; Umkopieren auf die Zielmatrix ainv
@@ -156,7 +156,7 @@ int Inverse (float a[][10], float ainv[][5], int n,int druck)
       ainv[i][j] = a[i][n+j];
     }
   }
-  return 1;  
+  return 0;  
 }
 
 int main(void) {
@@ -204,7 +204,16 @@ int main(void) {
    printf("<p id=\"img\"><a href=\"https://github.com/mstiehr-dev/invertMatrix\">=></a></p>\n");
    printf("</div>\n");
    printf("<div class=\"right\">Inverse Matrix:\n");
-   Inverse(matrix_in, matrix_out, dim, 0);
+   if(Inverse(matrix_in, matrix_out, dim, 0)!=0) {
+      // Fehler, konnte Inverse nicht berechnen
+      /*
+      printf("<script>\n");
+      printf("document.getElementById(\"");
+      printf("</script>\n");
+      */
+      printf("<h1 id=\"error\">Matrix ist singulaer - es existiert keine inverse Matrix</h1>\n");
+      return 1;
+   }
    printMatrix5F(matrix_out,dim,dim);
    printf("</div>\n");
    printf("</div>\n");

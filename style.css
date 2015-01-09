@@ -85,3 +85,6 @@ div.dokument {
 	font-size: 2.5em;
 	text-align: center;
 }
+#error {
+	color: #F00;
+}
